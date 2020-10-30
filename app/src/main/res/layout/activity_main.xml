@@ -4,24 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efefef"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottom_sheet"
+        android:layout_height="350dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:background="@color/colorAccent"
+        app:layout_behavior=".TopSheetBehavior"
+        app:behavior_hideable="true"
+        app:layout_insetEdge="top">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <include layout="@layout/elec_info" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/fab"
+        android:layout_width="39dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:src="@drawable/curtain_button_on"
+        app:layout_dodgeInsetEdges="top"
+        android:layout_marginTop="0dp"
+        android:paddingTop="0dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" />
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <Button
+                android:id="@+id/btn_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/expand" />
 
-    <include layout="@layout/content_main" />
+            <Button
+                android:id="@+id/btn_collasp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/collaspe" />
 
-    <!-- Adding bottom sheet after main content -->
-    <include layout="@layout/bottom_sheet" />
+            <TextView
+                android:id="@+id/txt_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/state"
+                android:textColor="#000"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
